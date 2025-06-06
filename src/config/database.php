@@ -1,9 +1,9 @@
 <?php
 
 $host = 'localhost';
-$dbname = 'financepal';
-$user = 'seu_usuario';
-$pass = 'sua_senha';
+$dbname = 'u473202279_ChatBoxEdu';
+$user = 'u473202279_ChatBoxEdu';
+$pass = 'Lu999838235Lu';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $pass);
