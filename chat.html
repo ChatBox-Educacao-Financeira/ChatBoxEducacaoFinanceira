@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat - FinancePal</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="chat-container">
+    <div class="top-header">
+      <div class="top-left">
+        <div class="app-icon">F</div>
+        <span class="app-name">FinancePal Chat</span>
+      </div>
+      <div class="top-right">
+        <a href="profile.html" class="user-icon">👤</a>
+      </div>
+    </div>
+
+    <div class="chat-header" id="chatHeader">
+      <div class="header-content">
+        <div class="bot-avatar">💬</div>
+        <div class="header-text">
+          <div class="header-title">Assistente Financeiro</div>
+          <div class="header-subtitle">Como posso te ajudar hoje?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages"></div>
+
+    <div class="chat-input-container">
+      <form id="chatForm" class="input-row">
+        <div class="input-wrapper">
+          <input type="text" id="chatInput" class="chat-input" placeholder="Digite sua mensagem..." required />
+          <button id="sendBtn" class="send-button">➤</button>
+        </div>
+        <button type="button" id="humanBtn" class="human-button">Falar com humano</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="assets/js/chat.js"></script>
+</body>
+</html>

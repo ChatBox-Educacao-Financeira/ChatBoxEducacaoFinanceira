@@ -1,0 +1,44 @@
+<?php
+session_start();
+header('Content-Type: application/json');
+
+require_once 'config/database.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    exit(json_encode(['erro' => 'Método não permitido']));
+}
+
+if (!isset($_SESSION['usuario_id'])) {
+    http_response_code(401);
+    exit(json_encode(['erro' => 'Usuário não autenticado']));
+}
+
+$input = json_decode(file_get_contents('php://input'), true);
+
+if (empty($input['senha_atual'])) {
+    http_response_code(400);
+    exit(json_encode(['erro' => 'Senha atual é obrigatória']));
+}
+
+try {
+    $stmt = $pdo->prepare("SELECT senha_hash FROM usuarios WHERE id = ?");
+    $stmt->execute([$_SESSION['usuario_id']]);
+    $senhaHash = $stmt->fetchColumn();
+
+    if (!$senhaHash) {
+        http_response_code(404);
+        exit(json_encode(['erro' => 'Usuário não encontrado']));
+    }
+
+    if (password_verify($input['senha_atual'], $senhaHash)) {
+        echo json_encode(['sucesso' => true]);
+    } else {
+        echo json_encode(['sucesso' => false, 'erro' => 'Senha inválida']);
+    }
+
+} catch(PDOException $e) {
+    http_response_code(500);
+    echo json_encode(['erro' => 'Erro interno']);
+}
+?>
