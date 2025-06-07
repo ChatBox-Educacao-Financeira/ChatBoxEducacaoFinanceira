@@ -1,0 +1,19 @@
+:root {
+  --primary-blue: #1e40af;
+  --primary-gold: #fbbf24;
+  --hover-gold: #f59e0b;
+  --primary-white: #ffffff;
+  --off-white-bg: #f8f9fa;
+  --page-bg: #f0f2f5;
+  --text-dark: #1a1a1a;
+  --text-medium: #495057;
+  --text-light: #6c757d;
+  --border-light: #e9ecef;
+  --border-medium: #dee2e6;
+  --success-green-text: #166534;
+  --success-green-bg: #dcfce7;
+  --success-green-border: #22c55e;
+  --danger-red: #ef4444;
+  --danger-red-hover: #dc2626;
+  --desktop-chat-occupied: 440px;
+}

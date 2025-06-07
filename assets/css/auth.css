@@ -1,0 +1,87 @@
+/* ===== AUTH CONTAINERS ===== */
+.auth-container {
+  @extend .container-base;
+  padding: 40px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+.signup-container {
+  @extend .auth-container;
+}
+
+/* ===== AUTH HEADER ===== */
+.auth-header,
+.signup-header {
+  margin-bottom: 30px;
+}
+
+.app-icon-signup {
+  @extend .app-icon;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  border-radius: 10px;
+  margin: 0 auto 16px;
+}
+
+.auth-title,
+.signup-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 8px 0;
+}
+
+.auth-subtitle,
+.signup-subtitle {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 24px;
+}
+
+/* ===== AUTH FORMS ===== */
+.auth-container .form-group {
+  margin-bottom: 18px;
+}
+
+.auth-container .form-input {
+  padding: 11px 14px;
+  border-radius: 10px;
+}
+
+/* ===== AUTH BUTTONS ===== */
+.primary-button,
+.signup-button {
+  @extend .btn-base, .btn-primary, .btn-full;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+/* ===== AUTH FOOTER ===== */
+.auth-footer,
+.login-link-container {
+  font-size: 14px;
+  margin-top: 25px;
+  color: var(--text-medium);
+}
+
+.login-link {
+  @extend .link;
+  font-weight: 500;
+}
+
+/* ===== TOKEN SECTION ===== */
+#tokenSection {
+  margin-top: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .auth-container,
+  .signup-container {
+    margin: 20px;
+    padding: 30px;
+  }
+}

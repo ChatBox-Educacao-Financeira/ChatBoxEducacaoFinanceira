@@ -5,25 +5,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
       const email = document.getElementById('email').value;
       const senha = document.getElementById('senha').value;
 
       try {
-        const res = await fetch('/src/routes/api/login_api.php', {
+        const res = await fetch('src/routes/api/login_api.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, senha })
         });
 
         const data = await res.json();
+
         if (res.ok && data.usuario) {
           localStorage.setItem('usuario', JSON.stringify(data.usuario));
-          window.location.href = 'chat.html';
+          window.location.href = 'dashboard.html';
         } else {
           alert(data.erro || 'Erro ao fazer login');
         }
       } catch {
-        alert('Erro de conexão');
+        alert('Erro de conexão com o servidor');
       }
     });
   }
@@ -37,21 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const senha = document.getElementById('senha').value;
 
       try {
-        const res = await fetch('/src/routes/api/cadastro_api.php', {
+        const res = await fetch('src/routes/api/cadastro_api.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ nome, email, senha })
         });
 
         const data = await res.json();
+
         if (res.ok && data.sucesso) {
-          alert('Conta criada com sucesso! Verifique seu e-mail.');
-          window.location.href = 'index.html';
+          alert('Cadastro realizado com sucesso! Verifique seu e-mail.');
+          window.location.href = 'dashboard.htmls';
         } else {
           alert(data.erro || 'Erro ao cadastrar');
         }
       } catch {
-        alert('Erro de conexão');
+        alert('Erro de conexão com o servidor');
       }
     });
   }

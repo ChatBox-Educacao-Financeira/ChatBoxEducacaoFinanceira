@@ -1,0 +1,27 @@
+@import url('base.css');
+@import url('components.css');
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.signup-header {
+  margin-bottom: 30px;
+}
+
+.login-link-container {
+  margin-top: 25px;
+  font-size: 14px;
+  color: var(--text-medium);
+}
+
+@media (max-width: 480px) {
+  .signup-container {
+    margin: 20px;
+    padding: 30px;
+  }
+}

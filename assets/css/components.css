@@ -1,0 +1,229 @@
+@import url('variables.css');
+
+/* App Icon */
+.app-icon,
+.app-icon-signup {
+  background: var(--primary-blue);
+  color: var(--primary-gold);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.app-icon {
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+   margin: 0 auto 16px;
+}
+
+.app-icon-signup {
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  margin: 0 auto 16px;
+}
+
+/* Containers */
+.auth-container,
+.signup-container,
+.profile-container {
+  background: var(--primary-white);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-container {
+  padding: 40px;
+  max-width: 400px;
+}
+
+.signup-container {
+  padding: 40px;
+}
+
+.profile-container {
+  max-width: 600px;
+  overflow: hidden;
+}
+
+/* Headers */
+.auth-title,
+.signup-title,
+.profile-title {
+  font-size: 22px;
+  margin: 8px 0;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.auth-subtitle,
+.signup-subtitle {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 24px;
+}
+
+.signup-subtitle {
+  margin-bottom: 30px;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-medium);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 2px solid var(--border-medium);
+  font-size: 14px;
+  background: var(--off-white-bg);
+  color: var(--text-dark);
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  background: var(--primary-white);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+/* Buttons */
+.primary-button,
+.signup-button,
+.save-button {
+  width: 100%;
+  background: var(--primary-blue);
+  color: var(--primary-white);
+  border: none;
+  padding: 14px 24px;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 10px;
+}
+
+.primary-button:hover,
+.signup-button:hover,
+.save-button:hover {
+  background: var(--primary-gold);
+  color: var(--primary-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.3);
+}
+
+.logout-button {
+  width: 100%;
+  background: transparent;
+  color: var(--primary-gold);
+  border: 2px solid var(--primary-gold);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 12px;
+}
+
+.logout-button:hover {
+  background: var(--primary-gold);
+  color: var(--primary-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.25);
+}
+
+.change-password-button,
+.confirm-password-button,
+.save-password-button {
+  background: var(--primary-blue);
+  color: var(--primary-white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 8px;
+}
+
+.change-password-button:hover,
+.confirm-password-button:hover,
+.save-password-button:hover {
+  background: var(--primary-gold);
+  color: var(--primary-blue);
+  transform: translateY(-1px);
+}
+
+/* Links */
+.auth-footer,
+.login-link-container {
+  font-size: 14px;
+  margin-top: 20px;
+  color: var(--text-medium);
+}
+
+.link,
+.login-link {
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover,
+.login-link:hover {
+  text-decoration: underline;
+  color: var(--primary-gold);
+}
+
+/* Message States */
+.success-message {
+  display: none;
+  background: var(--success-green-bg);
+  color: var(--success-green-text);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  border-left: 4px solid var(--success-green-border);
+}
+
+.password-error {
+  color: var(--danger-red);
+  font-size: 14px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: #fef2f2;
+  border-radius: 6px;
+  border-left: 4px solid var(--danger-red);
+}
+
+.password-step {
+  margin-top: 12px;
+  padding: 16px;
+  background: var(--off-white-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+}

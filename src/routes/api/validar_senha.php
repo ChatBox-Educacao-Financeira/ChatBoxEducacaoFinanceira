@@ -1,8 +1,8 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-
-require_once 'config/database.php';
+header('Access-Control-Allow-Origin: https://elystech.com.br');
+header('Access-Control-Allow-Credentials: true');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -13,6 +13,18 @@ if (!isset($_SESSION['usuario_id'])) {
     http_response_code(401);
     exit(json_encode(['erro' => 'Usuário não autenticado']));
 }
+
+// Fixed database path resolution
+$databasePath = $_SERVER['DOCUMENT_ROOT'] . '/src/config/database.php';
+if (!file_exists($databasePath)) {
+    $databasePath = __DIR__ . '/../../config/database.php';
+    if (!file_exists($databasePath)) {
+        http_response_code(500);
+        exit(json_encode(['erro' => 'Configuração do banco não encontrada']));
+    }
+}
+
+require_once $databasePath;
 
 $input = json_decode(file_get_contents('php://input'), true);
 
@@ -38,7 +50,8 @@ try {
     }
 
 } catch(PDOException $e) {
+    error_log('Password validation error: ' . $e->getMessage());
     http_response_code(500);
-    echo json_encode(['erro' => 'Erro interno']);
+    exit(json_encode(['erro' => 'Erro interno']));
 }
 ?>

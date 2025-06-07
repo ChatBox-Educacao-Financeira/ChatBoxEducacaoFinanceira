@@ -13,3 +13,4 @@ try {
     echo json_encode(['erro' => 'Erro de conexão com o banco de dados']);
     exit;
 }
+?>

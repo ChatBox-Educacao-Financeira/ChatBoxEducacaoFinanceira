@@ -1,0 +1,170 @@
+@import url('variables.css');
+
+/* Base Layout */
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Header Layout */
+.dashboard-header-bar {
+  background: var(--primary-blue);
+  color: var(--primary-white);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+  z-index: 10;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.dashboard-header-bar .app-icon-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--primary-white);
+}
+
+.dashboard-header-bar .app-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--primary-gold);
+  color: var(--primary-blue);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.dashboard-header-bar .page-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.dashboard-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dashboard-controls button,
+.dashboard-controls .profile-link {
+  background: none;
+  border: none;
+  color: var(--primary-white);
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.dashboard-controls button:hover,
+.dashboard-controls .profile-link:hover {
+  color: var(--hover-gold);
+}
+
+/* Grid Layout */
+#dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+  height: calc(100vh - 60px);
+  width: 100vw;
+  overflow: hidden;
+  grid-auto-rows: 1fr;
+  z-index: 1;
+  transition: width 0.2s ease;
+}
+
+@media (min-width: 769px) {
+  #dashboardGrid.chat-open {
+    width: calc(100vw - var(--desktop-chat-occupied));
+  }
+}
+
+/* Widget Layout */
+.chart-widget {
+  background: var(--primary-white);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.chart-widget:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.chart-widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border-light);
+  flex-shrink: 0;
+  height: 48px;
+}
+
+.chart-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+}
+
+.see-more-btn {
+  flex-shrink: 0;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+.see-more-btn a {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--primary-gold);
+  text-decoration: none;
+  border: 1px solid var(--primary-gold);
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.see-more-btn a:hover {
+  background: var(--primary-gold);
+  color: var(--primary-blue);
+}

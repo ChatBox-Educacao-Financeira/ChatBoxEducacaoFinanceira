@@ -1,0 +1,389 @@
+@import url('base.css');
+@import url('layout.css');
+@import url('components.css');
+
+.chart-widget-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-blue);
+}
+
+.chart-widget-period,
+.chart-widget-options {
+  font-size: 12px;
+  color: var(--text-light);
+  background: var(--off-white-bg);
+  padding: 4px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.chart-widget-options {
+  cursor: pointer;
+  border: 1px solid var(--border-medium);
+}
+
+.chart-widget-options:hover {
+  border-color: var(--primary-gold);
+  color: var(--primary-gold);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  table-layout: fixed;
+}
+
+.data-table th,
+.data-table td {
+  padding: 4px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-light);
+  word-wrap: break-word;
+}
+
+.data-table th {
+  background-color: var(--off-white-bg);
+  color: var(--primary-blue);
+  font-weight: 600;
+  height: 28px;
+}
+
+.data-table .value-positive {
+  color: #16a34a;
+}
+
+.data-table .value-negative {
+  color: var(--danger-red);
+}
+
+.data-table .total-row td {
+  font-weight: bold;
+  background-color: #e9ecef;
+}
+
+.table-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.line-chart-container svg,
+.bar-chart-container svg,
+.donut-chart-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.donut-center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.donut-center-text .label {
+  font-size: 10px;
+  color: var(--text-light);
+}
+
+.bar-chart-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding-bottom: 24px;
+}
+
+.bar-chart-container .bar {
+  flex: 1;
+  margin: 0 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.bar-chart-container .bar-rect {
+  width: 100%;
+  background: linear-gradient(to top, var(--primary-blue) 0%, #3b82f6 100%);
+  border-radius: 4px 4px 0 0;
+  transition: background 0.3s;
+  position: relative;
+}
+
+.bar-chart-container .bar-rect:hover {
+  background: linear-gradient(to top, #3b82f6 0%, var(--primary-blue) 100%);
+}
+
+.bar-chart-container .bar-label {
+  margin-top: 6px;
+  font-size: 10px;
+  color: var(--text-dark);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.line-chart-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+}
+
+.line-chart-container svg {
+  stroke-width: 2;
+}
+
+.line-chart-container .axis-line {
+  stroke: var(--border-light);
+  stroke-width: 0.5;
+}
+
+.line-chart-container .line-receita {
+  stroke: var(--primary-blue);
+}
+
+.line-chart-container .line-despesa {
+  stroke: var(--primary-gold);
+}
+
+.line-chart-container text {
+  font-size: 10px;
+  fill: var(--text-light);
+}
+
+.donut-chart-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-chart-container svg {
+  transform: rotate(-90deg);
+}
+
+.segment-1 {
+  background: conic-gradient(from 0deg, var(--primary-blue) 0%, var(--primary-blue) 40%, transparent 40%);
+}
+
+.segment-2 {
+  background: conic-gradient(from 144deg, var(--primary-gold) 0%, var(--primary-gold) 30%, transparent 30%);
+}
+
+.segment-3 {
+  background: conic-gradient(from 252deg, var(--danger-red) 0%, var(--danger-red) 30%, transparent 30%);
+}
+
+#chatToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-blue);
+  color: var(--primary-white);
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#chatToggle:hover {
+  background: var(--hover-gold);
+  color: var(--primary-blue);
+}
+
+#chatWidgetContainer {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 400px;
+  max-width: 90vw;
+  height: 80vh;
+  max-height: 90vh;
+  border: 1px solid var(--border-medium);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+  background: var(--primary-white);
+  overflow: hidden;
+  display: none;
+  z-index: 1001;
+}
+
+#chatCloseBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: var(--danger-red);
+  color: var(--primary-white);
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+#chatCloseBtn:hover {
+  background: #c0392b;
+}
+
+#chatIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#configOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+#configPanel {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  max-width: 90vw;
+  background: var(--primary-white);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 1001;
+}
+
+#configPanel h3 {
+  margin-bottom: 15px;
+  color: var(--primary-blue);
+}
+
+#configPanel .config-item {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#configPanel label {
+  font-size: 14px;
+  color: var(--text-medium);
+}
+
+#configPanel button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: var(--primary-blue);
+  color: var(--primary-white);
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#configPanel button:hover {
+  background: var(--hover-gold);
+  color: var(--primary-blue);
+}
+
+@media (max-width: 768px) {
+  .dashboard-header-bar {
+    flex-direction: column;
+    gap: 8px;
+    height: auto;
+    padding: 12px 16px;
+    text-align: center;
+  }
+  
+  .dashboard-header-bar .page-title {
+    font-size: 18px;
+  }
+  
+  #dashboardGrid {
+    grid-template-columns: 1fr;
+    height: calc(100vh - 60px);
+  }
+  
+  .chart-widget-header {
+    height: 44px;
+    padding: 6px 12px;
+  }
+  
+  .chart-widget-title {
+    font-size: 15px;
+  }
+  
+  .see-more-btn {
+    height: 28px;
+    padding: 0 12px;
+  }
+  
+  .bar-chart-container {
+    padding-bottom: 20px;
+  }
+  
+  .dashboard-controls {
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-header-bar {
+    padding: 10px 12px;
+  }
+  
+  .dashboard-header-bar .app-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+  
+  .dashboard-header-bar .page-title {
+    font-size: 16px;
+  }
+
+  #chatWidgetContainer {
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+  
+  #chatToggle {
+    bottom: 15px;
+    right: 15px;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+}

@@ -1,46 +1,107 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chat - FinancePal</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body>
-  <div class="chat-container">
-    <div class="top-header">
-      <div class="top-left">
-        <div class="app-icon">F</div>
-        <span class="app-name">FinancePal Chat</span>
-      </div>
-      <div class="top-right">
-        <a href="profile.html" class="user-icon">👤</a>
-      </div>
-    </div>
-
-    <div class="chat-header" id="chatHeader">
-      <div class="header-content">
-        <div class="bot-avatar">💬</div>
-        <div class="header-text">
-          <div class="header-title">Assistente Financeiro</div>
-          <div class="header-subtitle">Como posso te ajudar hoje?</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat - FinancePal</title>
+    <link rel="stylesheet" href="assets/css/chat.css" />
+  </head>
+  <body>
+    <div class="chat-container">
+        <div class="top-header">
+            <div class="top-left">
+                <div class="app-icon">F</div>
+                <span class="app-name">FinancePal</span>
+            </div>
+            <div class="top-right">
+                <a href="dashboard.html" class="dashboard-icon" title="Ver Dashboards">📊</a>
+                <div class="settings-icon" title="Configurações">⚙</div>
+                <a href="profile.html" class="user-icon" title="Meu Perfil">👤</a>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="chat-messages" id="chatMessages"></div>
-
-    <div class="chat-input-container">
-      <form id="chatForm" class="input-row">
-        <div class="input-wrapper">
-          <input type="text" id="chatInput" class="chat-input" placeholder="Digite sua mensagem..." required />
-          <button id="sendBtn" class="send-button">➤</button>
+        <div class="chat-header">
+            <div class="header-content">
+                <div class="bot-avatar">IA</div>
+                <div class="header-text">
+                    <div class="header-title">Assistente Financeiro IA</div>
+                    <div class="header-subtitle">Olá! Estou aqui para ajudá-lo a entender suas finanças empresariais. Faça qualquer pergunta ou escolha uma das sugestões abaixo.</div>
+                </div>
+            </div>
+            <div class="header-buttons">
+                <button class="header-btn">📊 Ver gráficos relacionados</button>
+                <button class="header-btn secondary">🔍 Entender este termo</button>
+            </div>
         </div>
-        <button type="button" id="humanBtn" class="human-button">Falar com humano</button>
-      </form>
-    </div>
-  </div>
 
-  <script src="assets/js/chat.js"></script>
-</body>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message-group">
+                <div class="message user">
+                    <div class="message-avatar">👤</div>
+                    <div class="message-bubble">Qual é minha situação financeira atual?</div>
+                </div>
+
+                <div class="message bot">
+                    <div class="message-avatar">IA</div>
+                    <div class="message-bubble">Com base nos seus dados mais recentes, sua empresa está atualmente em uma posição financeira estável. Aqui está uma visão geral rápida dos seus principais indicadores:</div>
+                </div>
+            </div>
+
+            <div class="financial-dashboard">
+                <div class="dashboard-header">Lucro Líquido ao Longo do Tempo</div>
+                <div class="dashboard-value">R$ 125.000</div>
+                <div class="dashboard-change">Últimos 12 Meses +15%</div>
+
+                <div class="chart-area">
+                    <div class="chart-line"></div>
+                </div>
+
+                <div class="chart-timeline">
+                    <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
+                </div>
+            </div>
+
+            <div class="message-group">
+                <div class="message bot">
+                    <div class="message-avatar">IA</div>
+                    <div class="message-bubble">
+                        <div class="tip-header">Dica:</div> Revisar regularmente suas demonstrações financeiras pode ajudá-lo a identificar tendências e oportunidades de melhoria em seus principais indicadores.
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-grid">
+                <div class="action-item" onclick="window.chatInstance.showMonthlyProfile()">
+                    <div class="action-item-title">Ver perfil mensal</div>
+                </div>
+                <div class="action-item" onclick="window.chatInstance.showIncomeStatement()">
+                    <div class="action-item-title">Explicar DRE</div>
+                </div>
+                <div class="action-item" onclick="window.chatInstance.showCashFlowAdvice()">
+                    <div class="action-item-title">Consultoria de caixa</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">IA está digitando...</div>
+
+        <div class="chat-input-container">
+            <div class="input-row">
+                <div class="input-wrapper">
+                    <input
+                        type="text"
+                        class="chat-input"
+                        id="chatInput"
+                        placeholder="Digite sua pergunta..."
+                        maxlength="1000"
+                    >
+                    <button class="send-button" id="sendButton">➤</button>
+                </div>
+                <button class="human-button" id="humanButton">👤 Humano</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/chat.js"></script>
+  </body>
 </html>

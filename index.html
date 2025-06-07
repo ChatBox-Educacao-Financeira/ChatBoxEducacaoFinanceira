@@ -1,36 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - FinancePal</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body class="center-page">
-  <div class="auth-container">
-    <div class="auth-header">
-      <div class="app-icon">F</div>
-      <h1 class="auth-title">Bem-vindo ao FinancePal</h1>
-      <p class="auth-subtitle">Acesse sua conta para continuar</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - FinancePal</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body class="center-page">
+    <div class="auth-container">
+      <div class="auth-header">
+        <div class="app-icon">F</div>
+        <h1 class="auth-title">Bem-vindo ao FinancePal</h1>
+        <p class="auth-subtitle">Acesse sua conta para continuar</p>
+      </div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email" class="form-label">E-mail ou Usuário</label>
+          <input type="text" id="email" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label for="senha" class="form-label">Senha</label>
+          <input type="password" id="senha" class="form-input" required />
+        </div>
+        <button type="submit" class="primary-button">Entrar</button>
+      </form>
+
+      <p class="auth-footer">Não tem conta? <a href="register.html" class="link">Cadastre-se</a></p>
     </div>
 
-    <form id="loginForm">
-      <div class="form-group">
-        <label for="email" class="form-label">E-mail ou Usuário</label>
-        <input type="text" id="email" class="form-input" required />
-      </div>
-      <div class="form-group">
-        <label for="senha" class="form-label">Senha</label>
-        <input type="password" id="senha" class="form-input" required />
-      </div>
-      <button type="submit" class="primary-button">Entrar</button>
-    </form>
-
-    <p class="auth-footer">
-      Não tem conta? <a href="cadastro.html" class="link">Cadastre-se</a>
-    </p>
-  </div>
-
-  <script src="assets/js/auth.js"></script>
-</body>
+    <script src="assets/js/auth.js"></script>
+  </body>
 </html>

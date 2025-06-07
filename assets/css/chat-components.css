@@ -1,0 +1,235 @@
+@import url('variables.css');
+
+/* Message Components */
+.message-group {
+  margin-bottom: 20px;
+}
+
+.message {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.message.user {
+  flex-direction: row-reverse;
+}
+
+.message.user .message-bubble {
+  margin-left: auto;
+}
+
+.message-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.message.bot .message-avatar {
+  background: var(--primary-blue);
+  color: var(--primary-white);
+}
+
+.message.user .message-avatar {
+  background: linear-gradient(135deg, var(--primary-gold) 0%, var(--hover-gold) 100%);
+  color: var(--primary-white);
+}
+
+.message-bubble {
+  max-width: 250px;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.message.bot .message-bubble {
+  background: var(--off-white-bg);
+  color: var(--text-medium);
+  border-bottom-left-radius: 6px;
+}
+
+.message.user .message-bubble {
+  background: var(--primary-blue);
+  color: var(--primary-white);
+  border-bottom-right-radius: 6px;
+}
+
+/* Action Grid */
+.action-grid {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0 20px 0;
+}
+
+.action-item {
+  flex: 1;
+  background: var(--primary-white);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-item:hover {
+  border-color: var(--primary-blue);
+  background: #f8f9ff;
+}
+
+.action-item-title {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-medium);
+  margin-bottom: 2px;
+}
+
+/* Chart Components */
+.chart-widget {
+  background: var(--primary-white);
+  margin: 16px 0;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.chart-period {
+  font-size: 11px;
+  color: var(--text-light);
+  background: var(--off-white-bg);
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.metric-item {
+  text-align: center;
+  padding: 12px;
+  background: var(--off-white-bg);
+  border-radius: 8px;
+}
+
+.metric-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin-bottom: 4px;
+}
+
+.metric-label {
+  font-size: 10px;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Chart Types */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 120px;
+  margin: 16px 0;
+}
+
+.bar {
+  flex: 1;
+  background: linear-gradient(to top, var(--primary-blue) 0%, #3b82f6 100%);
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  min-height: 20px;
+  transition: all 0.3s ease;
+}
+
+.bar:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.bar-label {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--text-light);
+}
+
+.line-chart {
+  height: 100px;
+  position: relative;
+  background: linear-gradient(to right, transparent 0%, var(--off-white-bg) 50%, transparent 100%);
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.line-path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.donut-chart {
+  width: 100px;
+  height: 100px;
+  margin: 16px auto;
+  position: relative;
+  border-radius: 50%;
+}
+
+.donut-segment {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: var(--primary-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: center;
+}
