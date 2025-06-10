@@ -114,3 +114,29 @@ window.addEventListener("resize", () => {
     dashboardGrid.classList.remove("chat-open")
   }
 })
+
+document.addEventListener("DOMContentLoaded", async function () {
+  try {
+    const response = await fetch("src/routes/api/perfil_get.php")
+    const result = await response.json()
+
+    if (result.sucesso && result.usuario.avatar) {
+      const avatarUrl = "/" + result.usuario.avatar
+      const profileLink = document.querySelector(".profile-link")
+
+      if (profileLink) {
+        const img = document.createElement("img")
+        img.src = avatarUrl
+        img.alt = "Avatar"
+        img.style.width = "24px"
+        img.style.height = "24px"
+        img.style.borderRadius = "50%"
+        img.style.objectFit = "cover"
+        profileLink.innerHTML = ""
+        profileLink.appendChild(img)
+      }
+    }
+  } catch (error) {
+    console.error("Erro ao carregar avatar:", error)
+  }
+})

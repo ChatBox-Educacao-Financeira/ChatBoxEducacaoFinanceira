@@ -454,7 +454,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 document.addEventListener("DOMContentLoaded", async function () {
   try {
-    const response = await fetch("/perfil_get.php")
+    const response = await fetch("src/routes/api/perfil_get.php")
     const result = await response.json()
 
     if (!result.sucesso || !result.usuario.avatar) return
