@@ -1,5 +1,5 @@
-@import url('base.css');
-@import url('chat-components.css');
+@import url("base.css");
+@import url("chat-components.css");
 
 .chat-container {
   width: 380px;
@@ -342,17 +342,17 @@
     border-radius: 0;
     box-shadow: none;
   }
-  
+
   .header-buttons {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .header-buttons .header-btn {
     width: 100%;
     margin-bottom: 8px;
   }
-  
+
   .header-buttons .header-btn:last-child {
     margin-bottom: 0;
   }
@@ -364,12 +364,12 @@
   .input-row {
     flex-wrap: wrap;
   }
-  
+
   .input-wrapper {
     margin-bottom: 8px;
     width: 100%;
   }
-  
+
   .human-button {
     flex-basis: 100%;
     text-align: center;

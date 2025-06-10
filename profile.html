@@ -1,541 +1,549 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meu Perfil - FinancePal</title>
-  <link rel="stylesheet" href="assets/css/profile.css" />
-</head>
-<body class="profile-page-body">
-  <div class="profile-container">
-    <!-- Sidebar com informações principais -->
-    <div class="profile-sidebar">
-      <button class="back-button" onclick="goBack()">← Dashboard</button>
-      
-      <div class="sidebar-content">
-        <div class="profile-avatar-container" id="profileAvatarContainer">
-          <input type="file" id="avatarUploadInput" accept="image/*">
-          <div class="profile-avatar" id="profileAvatarDisplay">
-            <span class="profile-avatar-icon-default">👤</span>
-          </div>
-        </div>
-        
-        <div class="profile-info">
-          <h1 class="profile-name">João Silva</h1>
-          <p class="profile-role">CEO • TechCorp Brasil</p>
-          <p class="profile-member">Membro desde Jan 2024</p>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meu Perfil - FinancePal</title>
+    <link rel="stylesheet" href="assets/css/profile.css" />
+  </head>
+  <body class="profile-page-body">
+    <div class="profile-container">
+      <!-- Sidebar com informações principais -->
+      <div class="profile-sidebar">
+        <button class="back-button" onclick="goBack()">← Dashboard</button>
 
-        <div class="profile-stats">
-          <div class="stat-item">
-            <div class="stat-value">R$ 2.4M</div>
-            <div class="stat-label">Faturamento Anual</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-value">23.4%</div>
-            <div class="stat-label">Crescimento</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-value">847</div>
-            <div class="stat-label">Transações/Mês</div>
-          </div>
-        </div>
-
-        <div class="sidebar-actions">
-          <button class="action-btn primary" onclick="saveProfile()">💾 Salvar Perfil</button>
-          <button class="action-btn secondary" id="changePasswordBtn">🔑 Alterar Senha</button>
-          <button class="action-btn secondary">📊 Gerar Relatório</button>
-          <button class="action-btn danger" id="logoutButton">🚪 Sair</button>
-        </div>
-
-        <div class="recent-activity">
-          <h3>Atividade Recente</h3>
-          <div class="activity-item">
-            <div class="activity-icon">💰</div>
-            <div class="activity-text">
-              <div>Pagamento processado</div>
-              <small>há 2 horas</small>
+        <div class="sidebar-content">
+          <div class="profile-avatar-container" id="profileAvatarContainer">
+            <input type="file" id="avatarUploadInput" accept="image/*" />
+            <div class="profile-avatar" id="profileAvatarDisplay">
+              <span class="profile-avatar-icon-default">👤</span>
             </div>
           </div>
-          <div class="activity-item">
-            <div class="activity-icon">📊</div>
-            <div class="activity-text">
-              <div>DRE atualizada</div>
-              <small>há 1 dia</small>
+
+          <div class="profile-info">
+            <h1 class="profile-name">João Silva</h1>
+            <p class="profile-role">CEO • TechCorp Brasil</p>
+            <p class="profile-member">Membro desde Jan 2024</p>
+          </div>
+
+          <div class="profile-stats">
+            <div class="stat-item">
+              <div class="stat-value">R$ 2.4M</div>
+              <div class="stat-label">Faturamento Anual</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">23.4%</div>
+              <div class="stat-label">Crescimento</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">847</div>
+              <div class="stat-label">Transações/Mês</div>
             </div>
           </div>
-          <div class="activity-item">
-            <div class="activity-icon">🔔</div>
-            <div class="activity-text">
-              <div>DARF vence em 5 dias</div>
-              <small>há 3 dias</small>
+
+          <div class="sidebar-actions">
+            <button class="action-btn primary" onclick="saveProfile()">💾 Salvar Perfil</button>
+            <button class="action-btn secondary" id="changePasswordBtn">🔑 Alterar Senha</button>
+            <button class="action-btn secondary">📊 Gerar Relatório</button>
+            <button class="action-btn danger" id="logoutButton">🚪 Sair</button>
+          </div>
+
+          <div class="recent-activity">
+            <h3>Atividade Recente</h3>
+            <div class="activity-item">
+              <div class="activity-icon">💰</div>
+              <div class="activity-text">
+                <div>Pagamento processado</div>
+                <small>há 2 horas</small>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon">📊</div>
+              <div class="activity-text">
+                <div>DRE atualizada</div>
+                <small>há 1 dia</small>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon">🔔</div>
+              <div class="activity-text">
+                <div>DARF vence em 5 dias</div>
+                <small>há 3 dias</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Área principal com tabs -->
+      <div class="profile-main">
+        <div class="profile-header">
+          <h1>Perfil Completo</h1>
+          <p>Gerencie suas informações pessoais e empresariais</p>
+
+          <div class="success-message" id="successMessage">✅ Perfil atualizado com sucesso!</div>
+        </div>
+
+        <div class="profile-tabs">
+          <button class="tab-btn active" data-tab="personal">👤 Dados Pessoais</button>
+          <button class="tab-btn" data-tab="company">🏢 Empresa</button>
+          <button class="tab-btn" data-tab="financial">💰 Financeiro</button>
+          <button class="tab-btn" data-tab="documents">📄 Documentos</button>
+          <button class="tab-btn" data-tab="preferences">⚙️ Preferências</button>
+        </div>
+
+        <!-- Tab 1: Dados Pessoais -->
+        <div class="tab-content active" id="personal">
+          <div class="content-grid">
+            <div class="form-section">
+              <h3>Informações Básicas</h3>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="fullName">Nome Completo</label>
+                  <input type="text" id="fullName" class="form-input" placeholder="Digite seu nome completo" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="cargo">Cargo</label>
+                  <input type="text" id="cargo" class="form-input" placeholder="Ex: CEO, Diretor, Gerente" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="email">E-mail</label>
+                  <input type="email" id="email" class="form-input" placeholder="seu@email.com" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="phone">Telefone</label>
+                  <input type="tel" id="phone" class="form-input" placeholder="(11) 99999-9999" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="document">CPF</label>
+                  <input type="text" id="document" class="form-input" placeholder="000.000.000-00" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="birthDate">Data de Nascimento</label>
+                  <input type="date" id="birthDate" class="form-input" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="address">Endereço Completo</label>
+                <input type="text" id="address" class="form-input" placeholder="Rua, número, bairro, cidade, CEP" />
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Segurança da Conta</h3>
+
+              <div class="password-step" id="currentPasswordStep" style="display: none">
+                <input type="password" id="currentPassword" class="form-input" placeholder="Senha atual" />
+                <button type="button" class="btn-confirm" id="confirmPasswordBtn">Confirmar</button>
+              </div>
+
+              <div class="password-step" id="newPasswordStep" style="display: none">
+                <input type="password" id="newPassword" class="form-input" placeholder="Nova senha" />
+                <input type="password" id="confirmNewPassword" class="form-input" placeholder="Confirme a nova senha" />
+                <button type="button" class="btn-save" id="savePasswordBtn">Salvar Nova Senha</button>
+              </div>
+
+              <div class="security-info">
+                <div class="info-item">
+                  <span class="info-icon">🔐</span>
+                  <div>
+                    <strong>Último acesso:</strong><br />
+                    <small>Hoje às 14:30 - São Paulo, SP</small>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <span class="info-icon">📱</span>
+                  <div>
+                    <strong>Dispositivos ativos:</strong><br />
+                    <small>2 dispositivos conectados</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Empresa -->
+        <div class="tab-content" id="company">
+          <div class="content-grid">
+            <div class="form-section">
+              <h3>Dados da Empresa</h3>
+
+              <div class="form-group">
+                <label class="form-label" for="companyName">Razão Social</label>
+                <input type="text" id="companyName" class="form-input" placeholder="Nome da empresa" />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="companyDocument">CNPJ</label>
+                  <input type="text" id="companyDocument" class="form-input" placeholder="00.000.000/0001-00" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="stateRegistration">Inscrição Estadual</label>
+                  <input type="text" id="stateRegistration" class="form-input" placeholder="000.000.000.000" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="industry">Setor de Atuação</label>
+                  <select id="industry" class="form-input">
+                    <option value="">Selecione o setor</option>
+                    <option value="tecnologia">Tecnologia</option>
+                    <option value="servicos">Serviços</option>
+                    <option value="comercio">Comércio</option>
+                    <option value="industria">Indústria</option>
+                    <option value="saude">Saúde</option>
+                    <option value="educacao">Educação</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="companySize">Porte da Empresa</label>
+                  <select id="companySize" class="form-input">
+                    <option value="">Selecione o porte</option>
+                    <option value="mei">MEI</option>
+                    <option value="micro">Microempresa</option>
+                    <option value="pequena">Pequena</option>
+                    <option value="media">Média</option>
+                    <option value="grande">Grande</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="companyAddress">Endereço da Empresa</label>
+                <input type="text" id="companyAddress" class="form-input" placeholder="Endereço completo" />
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Indicadores de Performance</h3>
+
+              <div class="metrics-grid">
+                <div class="metric-card blue">
+                  <div class="metric-icon">💼</div>
+                  <div class="metric-info">
+                    <div class="metric-value">R$ 425K</div>
+                    <div class="metric-label">Receita Trimestral</div>
+                  </div>
+                </div>
+                <div class="metric-card gold">
+                  <div class="metric-icon">👥</div>
+                  <div class="metric-info">
+                    <div class="metric-value">24</div>
+                    <div class="metric-label">Funcionários</div>
+                  </div>
+                </div>
+                <div class="metric-card green">
+                  <div class="metric-icon">📈</div>
+                  <div class="metric-info">
+                    <div class="metric-value">+18%</div>
+                    <div class="metric-label">Crescimento</div>
+                  </div>
+                </div>
+                <div class="metric-card purple">
+                  <div class="metric-icon">⭐</div>
+                  <div class="metric-info">
+                    <div class="metric-value">98.2%</div>
+                    <div class="metric-label">Satisfação</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Financeiro -->
+        <div class="tab-content" id="financial">
+          <div class="content-grid">
+            <div class="form-section">
+              <h3>Configurações Tributárias</h3>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="accountingRegime">Regime Tributário</label>
+                  <select id="accountingRegime" class="form-input">
+                    <option value="">Selecione o regime</option>
+                    <option value="simples">Simples Nacional</option>
+                    <option value="presumido">Lucro Presumido</option>
+                    <option value="real">Lucro Real</option>
+                    <option value="mei">MEI</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="fiscalYear">Ano Fiscal</label>
+                  <select id="fiscalYear" class="form-input">
+                    <option value="calendar">Janeiro - Dezembro</option>
+                    <option value="fiscal">Julho - Junho</option>
+                    <option value="custom">Personalizado</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="monthlyRevenue">Faturamento Mensal</label>
+                  <select id="monthlyRevenue" class="form-input">
+                    <option value="">Selecione a faixa</option>
+                    <option value="0-10k">Até R$ 10.000</option>
+                    <option value="10k-50k">R$ 10.000 - R$ 50.000</option>
+                    <option value="50k-100k">R$ 50.000 - R$ 100.000</option>
+                    <option value="100k-500k">R$ 100.000 - R$ 500.000</option>
+                    <option value="500k+">Acima de R$ 500.000</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="employees">Número de Funcionários</label>
+                  <input type="number" id="employees" class="form-input" placeholder="0" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="accountant">Contador Responsável</label>
+                <input type="text" id="accountant" class="form-input" placeholder="Nome e CRC do contador" />
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Dados Bancários</h3>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="mainBank">Banco Principal</label>
+                  <select id="mainBank" class="form-input">
+                    <option value="">Selecione o banco</option>
+                    <option value="bb">Banco do Brasil</option>
+                    <option value="cef">Caixa Econômica</option>
+                    <option value="itau">Itaú</option>
+                    <option value="bradesco">Bradesco</option>
+                    <option value="santander">Santander</option>
+                    <option value="nubank">Nubank</option>
+                    <option value="inter">Inter</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="accountType">Tipo de Conta</label>
+                  <select id="accountType" class="form-input">
+                    <option value="">Selecione o tipo</option>
+                    <option value="corrente">Conta Corrente</option>
+                    <option value="poupanca">Conta Poupança</option>
+                    <option value="conjunta">Conta Conjunta</option>
+                    <option value="empresarial">Conta Empresarial</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="financial-summary">
+                <h4>Resumo Financeiro Atual</h4>
+                <div class="summary-grid">
+                  <div class="summary-item">
+                    <span class="summary-label">Saldo em Conta</span>
+                    <span class="summary-value positive">R$ 89.240,50</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Contas a Receber</span>
+                    <span class="summary-value">R$ 156.800,00</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Contas a Pagar</span>
+                    <span class="summary-value negative">R$ 42.150,00</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Fluxo Projetado</span>
+                    <span class="summary-value positive">R$ 203.890,50</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Documentos -->
+        <div class="tab-content" id="documents">
+          <div class="content-grid">
+            <div class="form-section">
+              <h3>Upload de Documentos</h3>
+
+              <div class="file-upload-area" id="fileUploadArea">
+                <input
+                  type="file"
+                  id="fileInput"
+                  class="file-input"
+                  accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
+                  multiple
+                />
+                <div class="upload-content">
+                  <div class="file-upload-icon">📁</div>
+                  <div class="file-upload-text">Arraste arquivos aqui ou clique para selecionar</div>
+                  <div class="file-upload-hint">PDF, DOC, XLS, JPG, PNG até 10MB cada</div>
+                </div>
+              </div>
+
+              <div class="uploaded-files" id="uploadedFilesContainer">
+                <!-- Arquivos serão listados aqui -->
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Documentos Importantes</h3>
+
+              <div class="document-list">
+                <div class="document-item">
+                  <div class="doc-icon">📄</div>
+                  <div class="doc-info">
+                    <div class="doc-name">Contrato Social</div>
+                    <div class="doc-meta">Atualizado em 15/01/2024</div>
+                  </div>
+                  <div class="doc-actions">
+                    <button class="btn-icon">👁️</button>
+                    <button class="btn-icon">⬇️</button>
+                  </div>
+                </div>
+
+                <div class="document-item">
+                  <div class="doc-icon">📊</div>
+                  <div class="doc-info">
+                    <div class="doc-name">DRE Último Trimestre</div>
+                    <div class="doc-meta">Gerado automaticamente</div>
+                  </div>
+                  <div class="doc-actions">
+                    <button class="btn-icon">👁️</button>
+                    <button class="btn-icon">⬇️</button>
+                  </div>
+                </div>
+
+                <div class="document-item">
+                  <div class="doc-icon">🧾</div>
+                  <div class="doc-info">
+                    <div class="doc-name">Certidão Negativa</div>
+                    <div class="doc-meta">Válida até 20/08/2024</div>
+                  </div>
+                  <div class="doc-actions">
+                    <button class="btn-icon">👁️</button>
+                    <button class="btn-icon">⬇️</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 5: Preferências -->
+        <div class="tab-content" id="preferences">
+          <div class="content-grid">
+            <div class="form-section">
+              <h3>Notificações</h3>
+
+              <div class="preference-group">
+                <div class="pref-item">
+                  <div class="pref-info">
+                    <div class="pref-title">Vencimentos e Impostos</div>
+                    <div class="pref-desc">Receba lembretes sobre datas importantes</div>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" id="notifyDueDates" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="pref-item">
+                  <div class="pref-info">
+                    <div class="pref-title">Relatórios Mensais</div>
+                    <div class="pref-desc">Receba relatórios automatizados por email</div>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" id="notifyReports" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="pref-item">
+                  <div class="pref-info">
+                    <div class="pref-title">Alertas de Fluxo de Caixa</div>
+                    <div class="pref-desc">Notificações sobre situação financeira</div>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" id="notifyAlerts" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="pref-item">
+                  <div class="pref-info">
+                    <div class="pref-title">Newsletter Semanal</div>
+                    <div class="pref-desc">Dicas e novidades sobre finanças</div>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" id="notifyNewsletter" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Configurações de Exibição</h3>
+
+              <div class="preference-group">
+                <div class="form-group">
+                  <label class="form-label" for="dashboardLayout">Layout do Dashboard</label>
+                  <select id="dashboardLayout" class="form-input">
+                    <option value="compact">Compacto</option>
+                    <option value="detailed" selected>Detalhado</option>
+                    <option value="minimal">Minimalista</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="reportFrequency">Frequência de Relatórios</label>
+                  <select id="reportFrequency" class="form-input">
+                    <option value="weekly">Semanal</option>
+                    <option value="monthly" selected>Mensal</option>
+                    <option value="quarterly">Trimestral</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="currency">Moeda Padrão</label>
+                  <select id="currency" class="form-input">
+                    <option value="BRL" selected>Real (R$)</option>
+                    <option value="USD">Dólar ($)</option>
+                    <option value="EUR">Euro (€)</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Área principal com tabs -->
-    <div class="profile-main">
-      <div class="profile-header">
-        <h1>Perfil Completo</h1>
-        <p>Gerencie suas informações pessoais e empresariais</p>
-        
-        <div class="success-message" id="successMessage">
-          ✅ Perfil atualizado com sucesso!
-        </div>
-      </div>
+    <script src="assets/js/profile.js?v=26250607"></script>
+    <script>
+      // Tab functionality
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          // Remove active class from all tabs and contents
+          document.querySelectorAll(".tab-btn").forEach(t => t.classList.remove("active"))
+          document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"))
 
-      <div class="profile-tabs">
-        <button class="tab-btn active" data-tab="personal">👤 Dados Pessoais</button>
-        <button class="tab-btn" data-tab="company">🏢 Empresa</button>
-        <button class="tab-btn" data-tab="financial">💰 Financeiro</button>
-        <button class="tab-btn" data-tab="documents">📄 Documentos</button>
-        <button class="tab-btn" data-tab="preferences">⚙️ Preferências</button>
-      </div>
+          // Add active class to clicked tab
+          btn.classList.add("active")
 
-      <!-- Tab 1: Dados Pessoais -->
-      <div class="tab-content active" id="personal">
-        <div class="content-grid">
-          <div class="form-section">
-            <h3>Informações Básicas</h3>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="fullName">Nome Completo</label>
-                <input type="text" id="fullName" class="form-input" placeholder="Digite seu nome completo">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="email">E-mail</label>
-                <input type="email" id="email" class="form-input" placeholder="seu@email.com">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="phone">Telefone</label>
-                <input type="tel" id="phone" class="form-input" placeholder="(11) 99999-9999">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="document">CPF</label>
-                <input type="text" id="document" class="form-input" placeholder="000.000.000-00">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="birthDate">Data de Nascimento</label>
-                <input type="date" id="birthDate" class="form-input">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="address">Endereço Completo</label>
-              <input type="text" id="address" class="form-input" placeholder="Rua, número, bairro, cidade, CEP">
-            </div>
-          </div>
-
-          <div class="form-section">
-            <h3>Segurança da Conta</h3>
-            
-            <div class="password-step" id="currentPasswordStep" style="display: none;">
-              <input type="password" id="currentPassword" class="form-input" placeholder="Senha atual">
-              <button type="button" class="btn-confirm" id="confirmPasswordBtn">Confirmar</button>
-            </div>
-
-            <div class="password-step" id="newPasswordStep" style="display: none;">
-              <input type="password" id="newPassword" class="form-input" placeholder="Nova senha">
-              <input type="password" id="confirmNewPassword" class="form-input" placeholder="Confirme a nova senha">
-              <button type="button" class="btn-save" id="savePasswordBtn">Salvar Nova Senha</button>
-            </div>
-
-            <div class="security-info">
-              <div class="info-item">
-                <span class="info-icon">🔐</span>
-                <div>
-                  <strong>Último acesso:</strong><br>
-                  <small>Hoje às 14:30 - São Paulo, SP</small>
-                </div>
-              </div>
-              <div class="info-item">
-                <span class="info-icon">📱</span>
-                <div>
-                  <strong>Dispositivos ativos:</strong><br>
-                  <small>2 dispositivos conectados</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab 2: Empresa -->
-      <div class="tab-content" id="company">
-        <div class="content-grid">
-          <div class="form-section">
-            <h3>Dados da Empresa</h3>
-
-            <div class="form-group">
-              <label class="form-label" for="companyName">Razão Social</label>
-              <input type="text" id="companyName" class="form-input" placeholder="Nome da empresa">
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="companyDocument">CNPJ</label>
-                <input type="text" id="companyDocument" class="form-input" placeholder="00.000.000/0001-00">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="stateRegistration">Inscrição Estadual</label>
-                <input type="text" id="stateRegistration" class="form-input" placeholder="000.000.000.000">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="industry">Setor de Atuação</label>
-                <select id="industry" class="form-input">
-                  <option value="">Selecione o setor</option>
-                  <option value="tecnologia">Tecnologia</option>
-                  <option value="servicos">Serviços</option>
-                  <option value="comercio">Comércio</option>
-                  <option value="industria">Indústria</option>
-                  <option value="saude">Saúde</option>
-                  <option value="educacao">Educação</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="companySize">Porte da Empresa</label>
-                <select id="companySize" class="form-input">
-                  <option value="">Selecione o porte</option>
-                  <option value="mei">MEI</option>
-                  <option value="micro">Microempresa</option>
-                  <option value="pequena">Pequena</option>
-                  <option value="media">Média</option>
-                  <option value="grande">Grande</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="companyAddress">Endereço da Empresa</label>
-              <input type="text" id="companyAddress" class="form-input" placeholder="Endereço completo">
-            </div>
-          </div>
-
-          <div class="form-section">
-            <h3>Indicadores de Performance</h3>
-            
-            <div class="metrics-grid">
-              <div class="metric-card blue">
-                <div class="metric-icon">💼</div>
-                <div class="metric-info">
-                  <div class="metric-value">R$ 425K</div>
-                  <div class="metric-label">Receita Trimestral</div>
-                </div>
-              </div>
-              <div class="metric-card gold">
-                <div class="metric-icon">👥</div>
-                <div class="metric-info">
-                  <div class="metric-value">24</div>
-                  <div class="metric-label">Funcionários</div>
-                </div>
-              </div>
-              <div class="metric-card green">
-                <div class="metric-icon">📈</div>
-                <div class="metric-info">
-                  <div class="metric-value">+18%</div>
-                  <div class="metric-label">Crescimento</div>
-                </div>
-              </div>
-              <div class="metric-card purple">
-                <div class="metric-icon">⭐</div>
-                <div class="metric-info">
-                  <div class="metric-value">98.2%</div>
-                  <div class="metric-label">Satisfação</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab 3: Financeiro -->
-      <div class="tab-content" id="financial">
-        <div class="content-grid">
-          <div class="form-section">
-            <h3>Configurações Tributárias</h3>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="accountingRegime">Regime Tributário</label>
-                <select id="accountingRegime" class="form-input">
-                  <option value="">Selecione o regime</option>
-                  <option value="simples">Simples Nacional</option>
-                  <option value="presumido">Lucro Presumido</option>
-                  <option value="real">Lucro Real</option>
-                  <option value="mei">MEI</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="fiscalYear">Ano Fiscal</label>
-                <select id="fiscalYear" class="form-input">
-                  <option value="calendar">Janeiro - Dezembro</option>
-                  <option value="fiscal">Julho - Junho</option>
-                  <option value="custom">Personalizado</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="monthlyRevenue">Faturamento Mensal</label>
-                <select id="monthlyRevenue" class="form-input">
-                  <option value="">Selecione a faixa</option>
-                  <option value="0-10k">Até R$ 10.000</option>
-                  <option value="10k-50k">R$ 10.000 - R$ 50.000</option>
-                  <option value="50k-100k">R$ 50.000 - R$ 100.000</option>
-                  <option value="100k-500k">R$ 100.000 - R$ 500.000</option>
-                  <option value="500k+">Acima de R$ 500.000</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="employees">Número de Funcionários</label>
-                <input type="number" id="employees" class="form-input" placeholder="0">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="accountant">Contador Responsável</label>
-              <input type="text" id="accountant" class="form-input" placeholder="Nome e CRC do contador">
-            </div>
-          </div>
-
-          <div class="form-section">
-            <h3>Dados Bancários</h3>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="mainBank">Banco Principal</label>
-                <select id="mainBank" class="form-input">
-                  <option value="">Selecione o banco</option>
-                  <option value="bb">Banco do Brasil</option>
-                  <option value="cef">Caixa Econômica</option>
-                  <option value="itau">Itaú</option>
-                  <option value="bradesco">Bradesco</option>
-                  <option value="santander">Santander</option>
-                  <option value="nubank">Nubank</option>
-                  <option value="inter">Inter</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="accountType">Tipo de Conta</label>
-                <select id="accountType" class="form-input">
-                  <option value="">Selecione o tipo</option>
-                  <option value="corrente">Conta Corrente</option>
-                  <option value="poupanca">Conta Poupança</option>
-                  <option value="conjunta">Conta Conjunta</option>
-                  <option value="empresarial">Conta Empresarial</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="financial-summary">
-              <h4>Resumo Financeiro Atual</h4>
-              <div class="summary-grid">
-                <div class="summary-item">
-                  <span class="summary-label">Saldo em Conta</span>
-                  <span class="summary-value positive">R$ 89.240,50</span>
-                </div>
-                <div class="summary-item">
-                  <span class="summary-label">Contas a Receber</span>
-                  <span class="summary-value">R$ 156.800,00</span>
-                </div>
-                <div class="summary-item">
-                  <span class="summary-label">Contas a Pagar</span>
-                  <span class="summary-value negative">R$ 42.150,00</span>
-                </div>
-                <div class="summary-item">
-                  <span class="summary-label">Fluxo Projetado</span>
-                  <span class="summary-value positive">R$ 203.890,50</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab 4: Documentos -->
-      <div class="tab-content" id="documents">
-        <div class="content-grid">
-          <div class="form-section">
-            <h3>Upload de Documentos</h3>
-
-            <div class="file-upload-area" id="fileUploadArea">
-              <input type="file" id="fileInput" class="file-input" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" multiple>
-              <div class="upload-content">
-                <div class="file-upload-icon">📁</div>
-                <div class="file-upload-text">Arraste arquivos aqui ou clique para selecionar</div>
-                <div class="file-upload-hint">PDF, DOC, XLS, JPG, PNG até 10MB cada</div>
-              </div>
-            </div>
-
-            <div class="uploaded-files" id="uploadedFilesContainer">
-              <!-- Arquivos serão listados aqui -->
-            </div>
-          </div>
-
-          <div class="form-section">
-            <h3>Documentos Importantes</h3>
-            
-            <div class="document-list">
-              <div class="document-item">
-                <div class="doc-icon">📄</div>
-                <div class="doc-info">
-                  <div class="doc-name">Contrato Social</div>
-                  <div class="doc-meta">Atualizado em 15/01/2024</div>
-                </div>
-                <div class="doc-actions">
-                  <button class="btn-icon">👁️</button>
-                  <button class="btn-icon">⬇️</button>
-                </div>
-              </div>
-              
-              <div class="document-item">
-                <div class="doc-icon">📊</div>
-                <div class="doc-info">
-                  <div class="doc-name">DRE Último Trimestre</div>
-                  <div class="doc-meta">Gerado automaticamente</div>
-                </div>
-                <div class="doc-actions">
-                  <button class="btn-icon">👁️</button>
-                  <button class="btn-icon">⬇️</button>
-                </div>
-              </div>
-              
-              <div class="document-item">
-                <div class="doc-icon">🧾</div>
-                <div class="doc-info">
-                  <div class="doc-name">Certidão Negativa</div>
-                  <div class="doc-meta">Válida até 20/08/2024</div>
-                </div>
-                <div class="doc-actions">
-                  <button class="btn-icon">👁️</button>
-                  <button class="btn-icon">⬇️</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab 5: Preferências -->
-      <div class="tab-content" id="preferences">
-        <div class="content-grid">
-          <div class="form-section">
-            <h3>Notificações</h3>
-
-            <div class="preference-group">
-              <div class="pref-item">
-                <div class="pref-info">
-                  <div class="pref-title">Vencimentos e Impostos</div>
-                  <div class="pref-desc">Receba lembretes sobre datas importantes</div>
-                </div>
-                <label class="toggle">
-                  <input type="checkbox" id="notifyDueDates" checked>
-                  <span class="slider"></span>
-                </label>
-              </div>
-
-              <div class="pref-item">
-                <div class="pref-info">
-                  <div class="pref-title">Relatórios Mensais</div>
-                  <div class="pref-desc">Receba relatórios automatizados por email</div>
-                </div>
-                <label class="toggle">
-                  <input type="checkbox" id="notifyReports" checked>
-                  <span class="slider"></span>
-                </label>
-              </div>
-
-              <div class="pref-item">
-                <div class="pref-info">
-                  <div class="pref-title">Alertas de Fluxo de Caixa</div>
-                  <div class="pref-desc">Notificações sobre situação financeira</div>
-                </div>
-                <label class="toggle">
-                  <input type="checkbox" id="notifyAlerts">
-                  <span class="slider"></span>
-                </label>
-              </div>
-
-              <div class="pref-item">
-                <div class="pref-info">
-                  <div class="pref-title">Newsletter Semanal</div>
-                  <div class="pref-desc">Dicas e novidades sobre finanças</div>
-                </div>
-                <label class="toggle">
-                  <input type="checkbox" id="notifyNewsletter">
-                  <span class="slider"></span>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-section">
-            <h3>Configurações de Exibição</h3>
-
-            <div class="preference-group">
-              <div class="form-group">
-                <label class="form-label" for="dashboardLayout">Layout do Dashboard</label>
-                <select id="dashboardLayout" class="form-input">
-                  <option value="compact">Compacto</option>
-                  <option value="detailed" selected>Detalhado</option>
-                  <option value="minimal">Minimalista</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="reportFrequency">Frequência de Relatórios</label>
-                <select id="reportFrequency" class="form-input">
-                  <option value="weekly">Semanal</option>
-                  <option value="monthly" selected>Mensal</option>
-                  <option value="quarterly">Trimestral</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="currency">Moeda Padrão</label>
-                <select id="currency" class="form-input">
-                  <option value="BRL" selected>Real (R$)</option>
-                  <option value="USD">Dólar ($)</option>
-                  <option value="EUR">Euro (€)</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="assets/js/profile.js?v=25250607"></script>
-  <script>
-    // Tab functionality
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Remove active class from all tabs and contents
-        document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        
-        // Add active class to clicked tab
-        btn.classList.add('active');
-        
-        // Show corresponding content
-        const tabId = btn.getAttribute('data-tab');
-        document.getElementById(tabId).classList.add('active');
-      });
-    });
-  </script>
-</body>
+          // Show corresponding content
+          const tabId = btn.getAttribute("data-tab")
+          document.getElementById(tabId).classList.add("active")
+        })
+      })
+    </script>
+  </body>
 </html>

@@ -1,7 +1,8 @@
-@import url('variables.css');
+@import url("variables.css");
 
 /* Base Layout */
-html, body {
+html,
+body {
   height: 100vh;
   margin: 0;
   padding: 0;

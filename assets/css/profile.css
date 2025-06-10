@@ -1,4 +1,4 @@
-@import url('variables.css');
+@import url("variables.css");
 
 /* Reset completo para profile */
 * {
@@ -7,12 +7,13 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
   background: var(--page-bg);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   color: var(--text-dark);
 }
 
@@ -101,12 +102,12 @@ body.logging-out {
 }
 
 .profile-avatar::after {
-  content: '📷';
+  content: "📷";
   position: absolute;
   bottom: 5px;
   right: 5px;
   font-size: 16px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   color: var(--primary-white);
   border-radius: 50%;
   width: 24px;
@@ -439,7 +440,7 @@ body.logging-out {
   display: flex;
   align-items: center;
   gap: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .metric-card.blue {
@@ -601,7 +602,7 @@ body.logging-out {
 }
 
 .document-item:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .doc-icon {
@@ -766,7 +767,7 @@ input:checked + .slider:before {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
   }
-  
+
   .profile-sidebar {
     padding: 20px;
     flex-direction: row;
@@ -774,39 +775,39 @@ input:checked + .slider:before {
     align-items: center;
     height: auto;
   }
-  
+
   .sidebar-content {
     flex-direction: row;
     gap: 20px;
     padding: 0;
     height: auto;
   }
-  
+
   .content-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .form-section {
     border-right: none;
     border-bottom: 1px solid var(--border-light);
   }
-  
+
   .form-section:last-child {
     border-bottom: none;
   }
-  
+
   .form-row {
     grid-template-columns: 1fr;
   }
-  
+
   .metrics-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .profile-tabs {
     overflow-x: auto;
   }
-  
+
   .tab-btn {
     white-space: nowrap;
   }

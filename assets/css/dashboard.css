@@ -1,6 +1,6 @@
-@import url('base.css');
-@import url('layout.css');
-@import url('components.css');
+@import url("base.css");
+@import url("layout.css");
+@import url("components.css");
 
 .chart-widget-title {
   font-size: 16px;
@@ -197,7 +197,7 @@
   background: var(--primary-blue);
   color: var(--primary-white);
   border: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   font-size: 24px;
   cursor: pointer;
   z-index: 1000;
@@ -221,7 +221,7 @@
   max-height: 90vh;
   border: 1px solid var(--border-medium);
   border-radius: 12px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
   background: var(--primary-white);
   overflow: hidden;
   display: none;
@@ -322,34 +322,34 @@
     padding: 12px 16px;
     text-align: center;
   }
-  
+
   .dashboard-header-bar .page-title {
     font-size: 18px;
   }
-  
+
   #dashboardGrid {
     grid-template-columns: 1fr;
     height: calc(100vh - 60px);
   }
-  
+
   .chart-widget-header {
     height: 44px;
     padding: 6px 12px;
   }
-  
+
   .chart-widget-title {
     font-size: 15px;
   }
-  
+
   .see-more-btn {
     height: 28px;
     padding: 0 12px;
   }
-  
+
   .bar-chart-container {
     padding-bottom: 20px;
   }
-  
+
   .dashboard-controls {
     justify-content: center;
     gap: 12px;
@@ -360,13 +360,13 @@
   .dashboard-header-bar {
     padding: 10px 12px;
   }
-  
+
   .dashboard-header-bar .app-icon {
     width: 24px;
     height: 24px;
     font-size: 14px;
   }
-  
+
   .dashboard-header-bar .page-title {
     font-size: 16px;
   }
@@ -378,7 +378,7 @@
     height: 100vh;
     border-radius: 0;
   }
-  
+
   #chatToggle {
     bottom: 15px;
     right: 15px;

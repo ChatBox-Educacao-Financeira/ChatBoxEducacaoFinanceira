@@ -6,12 +6,14 @@ header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
+// Definir timezone do Brasil
+date_default_timezone_set('America/Sao_Paulo');
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     exit(json_encode(['erro' => 'Método não permitido']));
 }
 
-// Fixed database path resolution
 $databasePath = $_SERVER['DOCUMENT_ROOT'] . '/src/config/database.php';
 if (!file_exists($databasePath)) {
     $databasePath = __DIR__ . '/../../config/database.php';
@@ -35,22 +37,20 @@ try {
     $stmt->execute([$input['email']]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$usuario) {
+    if (!$usuario || !password_verify($input['senha'], $usuario['senha_hash'])) {
         http_response_code(401);
         exit(json_encode(['erro' => 'Credenciais inválidas']));
     }
 
-    if (!password_verify($input['senha'], $usuario['senha_hash'])) {
-        http_response_code(401);
-        exit(json_encode(['erro' => 'Credenciais inválidas']));
-    }
+    // Configurar timezone no MySQL e atualizar último acesso
+    $pdo->exec("SET time_zone = '-03:00'");
+    $stmt = $pdo->prepare("UPDATE usuarios SET ultimo_acesso = NOW() WHERE id = ?");
+    $stmt->execute([$usuario['id']]);
 
-    // Create session
     $_SESSION['usuario_id'] = $usuario['id'];
     $_SESSION['usuario_nome'] = $usuario['nome_completo'];
     $_SESSION['usuario_email'] = $usuario['email'];
     
-    // Remove sensitive data
     unset($usuario['senha_hash']);
     
     echo json_encode([
@@ -61,6 +61,6 @@ try {
 } catch (PDOException $e) {
     error_log("Login error: " . $e->getMessage());
     http_response_code(500);
-    exit(json_encode(['erro' => 'Erro interno']));
+    exit(json_encode(['erro' => 'Erro interno: ' . $e->getMessage()]));
 }
 ?>

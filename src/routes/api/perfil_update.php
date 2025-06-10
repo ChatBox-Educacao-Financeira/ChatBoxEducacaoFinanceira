@@ -16,7 +16,6 @@ if (!isset($_SESSION['usuario_id'])) {
     exit(json_encode(['erro' => 'Usuário não autenticado']));
 }
 
-// Fixed database path resolution
 $databasePath = $_SERVER['DOCUMENT_ROOT'] . '/src/config/database.php';
 if (!file_exists($databasePath)) {
     $databasePath = __DIR__ . '/../../config/database.php';
@@ -29,6 +28,9 @@ if (!file_exists($databasePath)) {
 require_once $databasePath;
 
 $input = json_decode(file_get_contents('php://input'), true);
+
+// Debug log
+error_log('perfil_update recebido: ' . json_encode($input));
 
 if (empty($input['nome_completo']) || empty($input['email'])) {
     http_response_code(400);
@@ -50,20 +52,29 @@ try {
         exit(json_encode(['erro' => 'Email já está em uso']));
     }
     
-    // Update user
-    $stmt = $pdo->prepare("UPDATE usuarios SET nome_completo = ?, email = ?, nome_empresa = ? WHERE id = ?");
-    $stmt->execute([
+    // Update user data including cargo
+    $stmt = $pdo->prepare("UPDATE usuarios SET nome_completo = ?, email = ?, nome_empresa = ?, cargo = ? WHERE id = ?");
+    $success = $stmt->execute([
         $input['nome_completo'],
         $input['email'],
         $input['nome_empresa'] ?? null,
+        $input['cargo'] ?? 'CEO',
         $_SESSION['usuario_id']
     ]);
     
-    echo json_encode(['sucesso' => true]);
+    // Debug log
+    error_log('SQL executado. Linhas afetadas: ' . $stmt->rowCount());
+    error_log('Valores salvos: nome=' . $input['nome_completo'] . ', cargo=' . ($input['cargo'] ?? 'CEO'));
+    
+    if ($success) {
+        echo json_encode(['sucesso' => true, 'debug' => 'Dados salvos com sucesso']);
+    } else {
+        echo json_encode(['sucesso' => false, 'erro' => 'Falha ao salvar dados']);
+    }
     
 } catch(PDOException $e) {
     error_log('Profile update error: ' . $e->getMessage());
     http_response_code(500);
-    exit(json_encode(['erro' => 'Erro interno']));
+    exit(json_encode(['erro' => 'Erro interno: ' . $e->getMessage()]));
 }
 ?>

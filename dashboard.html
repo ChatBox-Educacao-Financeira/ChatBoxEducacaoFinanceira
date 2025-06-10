@@ -1,287 +1,319 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painel de Dashboards – FinancePal</title>
-  <link rel="stylesheet" href="assets/css/dashboard.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel de Dashboards – Orion</title>
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+  </head>
 
-<body>
-  <div class="app-container">
-    <!-- Overlay do modal de configuração -->
-    <div id="configOverlay"></div>
+  <body>
+    <div class="app-container">
+      <!-- Overlay do modal de configuração -->
+      <div id="configOverlay"></div>
 
-    <!-- Modal de configuração -->
-    <div id="configPanel">
-      <h3>Configurar Dashboards</h3>
-      <!-- Gráficos originais -->
-      <div class="config-item">
-        <input type="checkbox" id="chk-dre" checked />
-        <label for="chk-dre">Demonstrativo de Resultados (DRE)</label>
+      <!-- Modal de configuração -->
+      <div id="configPanel">
+        <h3>Configurar Dashboards</h3>
+        <!-- Gráficos originais -->
+        <div class="config-item">
+          <input type="checkbox" id="chk-dre" checked />
+          <label for="chk-dre">Demonstrativo de Resultados (DRE)</label>
+        </div>
+        <div class="config-item">
+          <input type="checkbox" id="chk-fluxo" checked />
+          <label for="chk-fluxo">Fluxo de Caixa Mensal</label>
+        </div>
+        <div class="config-item">
+          <input type="checkbox" id="chk-vendas" checked />
+          <label for="chk-vendas">Performance de Vendas por Produto</label>
+        </div>
+        <div class="config-item">
+          <input type="checkbox" id="chk-despesas" checked />
+          <label for="chk-despesas">Despesas por Categoria</label>
+        </div>
+        <hr style="border: 1px solid var(--border-light); margin: 15px 0" />
+        <!-- Gráficos extras -->
+        <div class="config-item">
+          <input type="checkbox" id="chk-receitas-despesas" />
+          <label for="chk-receitas-despesas">Receitas vs Despesas</label>
+        </div>
+        <div class="config-item">
+          <input type="checkbox" id="chk-kpi-clientes" />
+          <label for="chk-kpi-clientes">KPI de Clientes</label>
+        </div>
+        <button id="configCloseBtn">Salvar e Fechar</button>
       </div>
-      <div class="config-item">
-        <input type="checkbox" id="chk-fluxo" checked />
-        <label for="chk-fluxo">Fluxo de Caixa Mensal</label>
-      </div>
-      <div class="config-item">
-        <input type="checkbox" id="chk-vendas" checked />
-        <label for="chk-vendas">Performance de Vendas por Produto</label>
-      </div>
-      <div class="config-item">
-        <input type="checkbox" id="chk-despesas" checked />
-        <label for="chk-despesas">Despesas por Categoria</label>
-      </div>
-      <hr style="border: 1px solid var(--border-light); margin: 15px 0;" />
-      <!-- Gráficos extras -->
-      <div class="config-item">
-        <input type="checkbox" id="chk-receitas-despesas" />
-        <label for="chk-receitas-despesas">Receitas vs Despesas</label>
-      </div>
-      <div class="config-item">
-        <input type="checkbox" id="chk-kpi-clientes" />
-        <label for="chk-kpi-clientes">KPI de Clientes</label>
-      </div>
-      <button id="configCloseBtn">Salvar e Fechar</button>
+
+      <!-- Header do Dashboard -->
+      <header class="dashboard-header-bar">
+        <a href="#" class="app-icon-link">
+          <div class="app-icon">F</div>
+          <h1 class="page-title">Painel de Dashboards</h1>
+        </a>
+
+        <div class="dashboard-controls">
+          <button class="config-toggle" id="configToggle" title="Configurar Dashboards">⚙️</button>
+          <a href="profile.html" class="profile-link" title="Perfil de Usuário">👤</a>
+        </div>
+      </header>
+
+      <!-- Grid de Dashboards -->
+      <main id="dashboardGrid">
+        <!-- Demonstrativo de Resultados (DRE) -->
+        <section class="chart-widget" id="dre-widget" draggable="true">
+          <div class="chart-widget-header">
+            <h2 class="chart-widget-title">Demonstrativo de Resultados (DRE)</h2>
+            <span class="chart-widget-period">Último Trimestre</span>
+          </div>
+          <div class="chart-content">
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Valor (R$)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Receita Operacional Bruta</td>
+                    <td class="value-positive">150.000,00</td>
+                  </tr>
+                  <tr>
+                    <td>(-) Deduções da Receita Bruta</td>
+                    <td class="value-negative">(15.000,00)</td>
+                  </tr>
+                  <tr>
+                    <td>(=) Receita Operacional Líquida</td>
+                    <td class="value-positive">135.000,00</td>
+                  </tr>
+                  <tr>
+                    <td>(-) Custo dos Produtos Vendidos (CPV)</td>
+                    <td class="value-negative">(60.000,00)</td>
+                  </tr>
+                  <tr class="total-row">
+                    <td>(=) Lucro Bruto</td>
+                    <td class="value-positive">75.000,00</td>
+                  </tr>
+                  <tr>
+                    <td>(-) Despesas Operacionais</td>
+                    <td class="value-negative">(30.000,00)</td>
+                  </tr>
+                  <tr>
+                    <td>(+) Outras Receitas</td>
+                    <td class="value-positive">5.000,00</td>
+                  </tr>
+                  <tr class="total-row">
+                    <td>(=) Lucro Líquido Antes do IR</td>
+                    <td class="value-positive">50.000,00</td>
+                  </tr>
+                  <tr>
+                    <td>(-) Imposto de Renda e CSLL</td>
+                    <td class="value-negative">(12.500,00)</td>
+                  </tr>
+                  <tr class="total-row" style="background-color: var(--primary-gold); color: var(--primary-blue)">
+                    <td>(=) Lucro Líquido do Exercício</td>
+                    <td class="value-positive">37.500,00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="see-more-btn">
+            <a href="dre_detail.html">Ver Mais ›</a>
+          </div>
+        </section>
+
+        <!-- Fluxo de Caixa Mensal -->
+        <section class="chart-widget" id="fluxo-widget" draggable="true">
+          <div class="chart-widget-header">
+            <h2 class="chart-widget-title">Fluxo de Caixa Mensal</h2>
+            <span class="chart-widget-period">Últimos 6 Meses</span>
+          </div>
+          <div class="chart-content">
+            <div class="line-chart-container">
+              <svg viewBox="0 0 300 180" preserveAspectRatio="xMidYMid meet">
+                <line class="axis-line" x1="20" y1="30" x2="280" y2="30" />
+                <line class="axis-line" x1="20" y1="80" x2="280" y2="80" />
+                <line class="axis-line" x1="20" y1="130" x2="280" y2="130" />
+
+                <polyline class="line-receita" points="30,120 80,90 130,100 180,70 230,80 280,50" fill="none" />
+                <polyline class="line-despesa" points="30,150 80,130 130,140 180,110 230,120 280,90" fill="none" />
+
+                <circle cx="30" cy="120" r="4" fill="var(--primary-blue)" />
+                <circle cx="80" cy="90" r="4" fill="var(--primary-blue)" />
+                <circle cx="280" cy="50" r="4" fill="var(--primary-blue)" />
+                <circle cx="30" cy="150" r="4" fill="var(--primary-gold)" />
+                <circle cx="180" cy="110" r="4" fill="var(--primary-gold)" />
+                <circle cx="280" cy="90" r="4" fill="var(--primary-gold)" />
+
+                <text x="25" y="175">Jan</text>
+                <text x="125" y="175">Mar</text>
+                <text x="225" y="175">Jun</text>
+              </svg>
+            </div>
+          </div>
+          <div class="see-more-btn">
+            <a href="fluxo_detail.html">Ver Mais ›</a>
+          </div>
+        </section>
+
+        <!-- Performance de Vendas por Produto -->
+        <section class="chart-widget" id="vendas-widget" draggable="true">
+          <div class="chart-widget-header">
+            <h2 class="chart-widget-title">Performance de Vendas por Produto</h2>
+            <span class="chart-widget-options">Ver Detalhes</span>
+          </div>
+          <div class="chart-content">
+            <div class="bar-chart-container">
+              <div class="bar">
+                <div class="bar-rect" style="height: 60%"></div>
+                <div class="bar-label">Produto A</div>
+              </div>
+              <div class="bar">
+                <div class="bar-rect" style="height: 90%"></div>
+                <div class="bar-label">Produto B</div>
+              </div>
+              <div class="bar">
+                <div class="bar-rect" style="height: 40%"></div>
+                <div class="bar-label">Produto C</div>
+              </div>
+              <div class="bar">
+                <div class="bar-rect" style="height: 75%"></div>
+                <div class="bar-label">Produto D</div>
+              </div>
+              <div class="bar">
+                <div class="bar-rect" style="height: 55%"></div>
+                <div class="bar-label">Produto E</div>
+              </div>
+            </div>
+          </div>
+          <div class="see-more-btn">
+            <a href="vendas_detail.html">Ver Mais ›</a>
+          </div>
+        </section>
+
+        <!-- Despesas por Categoria -->
+        <section class="chart-widget" id="despesas-widget" draggable="true">
+          <div class="chart-widget-header">
+            <h2 class="chart-widget-title">Despesas por Categoria</h2>
+            <span class="chart-widget-period">Mês Atual</span>
+          </div>
+          <div class="chart-content">
+            <div class="donut-chart-container">
+              <svg viewBox="0 0 100 100">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  stroke="var(--primary-blue)"
+                  stroke-width="20"
+                  fill="none"
+                  stroke-dasharray="251.2"
+                  stroke-dashoffset="100.48"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  stroke="var(--primary-gold)"
+                  stroke-width="20"
+                  fill="none"
+                  stroke-dasharray="251.2"
+                  stroke-dashoffset="75.36"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  stroke="#60a5fa"
+                  stroke-width="20"
+                  fill="none"
+                  stroke-dasharray="251.2"
+                  stroke-dashoffset="25.12"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  stroke="#cbd5e1"
+                  stroke-width="20"
+                  fill="none"
+                  stroke-dasharray="251.2"
+                  stroke-dashoffset="0"
+                />
+              </svg>
+              <div class="donut-center-text">
+                <span>R$ 15K</span><br />
+                <span class="label">Total Despesas</span>
+              </div>
+            </div>
+          </div>
+          <div class="see-more-btn">
+            <a href="despesas_detail.html">Ver Mais ›</a>
+          </div>
+        </section>
+
+        <!-- Receitas vs Despesas -->
+        <section class="chart-widget" id="receitas-despesas-widget" draggable="true" style="display: none">
+          <div class="chart-widget-header">
+            <h2 class="chart-widget-title">Receitas vs Despesas</h2>
+            <span class="chart-widget-period">Últimos 12 Meses</span>
+          </div>
+          <div class="chart-content">
+            <div class="line-chart-container">
+              <svg viewBox="0 0 300 180" preserveAspectRatio="xMidYMid meet">
+                <polyline class="line-receita" points="10,130 60,90 110,100 160,60 210,80 260,40" fill="none" />
+                <polyline class="line-despesa" points="10,150 60,120 110,140 160,110 210,130 260,100" fill="none" />
+              </svg>
+            </div>
+          </div>
+          <div class="see-more-btn">
+            <a href="receitas_despesas_detail.html">Ver Mais ›</a>
+          </div>
+        </section>
+
+        <!-- KPI de Clientes -->
+        <section class="chart-widget" id="kpi-clientes-widget" draggable="true" style="display: none">
+          <div class="chart-widget-header">
+            <h2 class="chart-widget-title">KPI de Clientes</h2>
+            <span class="chart-widget-period">Últimos 6 Meses</span>
+          </div>
+          <div class="chart-content">
+            <div class="metrics-grid">
+              <div class="metric-item">
+                <div class="metric-value">120</div>
+                <div class="metric-label">Novos Clientes</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-value">85%</div>
+                <div class="metric-label">Retenção</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-value">R$ 50K</div>
+                <div class="metric-label">Ticket Médio</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-value">✔️</div>
+                <div class="metric-label">Satisfação</div>
+              </div>
+            </div>
+          </div>
+          <div class="see-more-btn">
+            <a href="kpi_clientes_detail.html">Ver Mais ›</a>
+          </div>
+        </section>
+      </main>
     </div>
 
-    <!-- Header do Dashboard -->
-    <header class="dashboard-header-bar">
-      <a href="#" class="app-icon-link">
-        <div class="app-icon">F</div>
-        <h1 class="page-title">Painel de Dashboards</h1>
-      </a>
+    <!-- Chat Flutuante -->
+    <button id="chatToggle" title="Abrir Chat">💬</button>
+    <div id="chatWidgetContainer">
+      <button id="chatCloseBtn" title="Fechar Chat">×</button>
+      <iframe id="chatIframe" src="chat.html"></iframe>
+    </div>
 
-      <div class="dashboard-controls">
-        <button class="config-toggle" id="configToggle" title="Configurar Dashboards">⚙️</button>
-        <a href="profile.html" class="profile-link" title="Perfil de Usuário">👤</a>
-      </div>
-    </header>
-
-    <!-- Grid de Dashboards -->
-    <main id="dashboardGrid">
-      <!-- Demonstrativo de Resultados (DRE) -->
-      <section class="chart-widget" id="dre-widget" draggable="true">
-        <div class="chart-widget-header">
-          <h2 class="chart-widget-title">Demonstrativo de Resultados (DRE)</h2>
-          <span class="chart-widget-period">Último Trimestre</span>
-        </div>
-        <div class="chart-content">
-          <div class="table-container">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Descrição</th>
-                  <th>Valor (R$)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Receita Operacional Bruta</td>
-                  <td class="value-positive">150.000,00</td>
-                </tr>
-                <tr>
-                  <td>(-) Deduções da Receita Bruta</td>
-                  <td class="value-negative">(15.000,00)</td>
-                </tr>
-                <tr>
-                  <td>(=) Receita Operacional Líquida</td>
-                  <td class="value-positive">135.000,00</td>
-                </tr>
-                <tr>
-                  <td>(-) Custo dos Produtos Vendidos (CPV)</td>
-                  <td class="value-negative">(60.000,00)</td>
-                </tr>
-                <tr class="total-row">
-                  <td>(=) Lucro Bruto</td>
-                  <td class="value-positive">75.000,00</td>
-                </tr>
-                <tr>
-                  <td>(-) Despesas Operacionais</td>
-                  <td class="value-negative">(30.000,00)</td>
-                </tr>
-                <tr>
-                  <td>(+) Outras Receitas</td>
-                  <td class="value-positive">5.000,00</td>
-                </tr>
-                <tr class="total-row">
-                  <td>(=) Lucro Líquido Antes do IR</td>
-                  <td class="value-positive">50.000,00</td>
-                </tr>
-                <tr>
-                  <td>(-) Imposto de Renda e CSLL</td>
-                  <td class="value-negative">(12.500,00)</td>
-                </tr>
-                <tr class="total-row" style="background-color: var(--primary-gold); color: var(--primary-blue);">
-                  <td>(=) Lucro Líquido do Exercício</td>
-                  <td class="value-positive">37.500,00</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="see-more-btn">
-          <a href="dre_detail.html">Ver Mais ›</a>
-        </div>
-      </section>
-
-      <!-- Fluxo de Caixa Mensal -->
-      <section class="chart-widget" id="fluxo-widget" draggable="true">
-        <div class="chart-widget-header">
-          <h2 class="chart-widget-title">Fluxo de Caixa Mensal</h2>
-          <span class="chart-widget-period">Últimos 6 Meses</span>
-        </div>
-        <div class="chart-content">
-          <div class="line-chart-container">
-            <svg viewBox="0 0 300 180" preserveAspectRatio="xMidYMid meet">
-              <line class="axis-line" x1="20" y1="30" x2="280" y2="30" />
-              <line class="axis-line" x1="20" y1="80" x2="280" y2="80" />
-              <line class="axis-line" x1="20" y1="130" x2="280" y2="130" />
-
-              <polyline class="line-receita" points="30,120 80,90 130,100 180,70 230,80 280,50" fill="none" />
-              <polyline class="line-despesa" points="30,150 80,130 130,140 180,110 230,120 280,90" fill="none" />
-
-              <circle cx="30" cy="120" r="4" fill="var(--primary-blue)"/>
-              <circle cx="80" cy="90" r="4" fill="var(--primary-blue)"/>
-              <circle cx="280" cy="50" r="4" fill="var(--primary-blue)"/>
-              <circle cx="30" cy="150" r="4" fill="var(--primary-gold)"/>
-              <circle cx="180" cy="110" r="4" fill="var(--primary-gold)"/>
-              <circle cx="280" cy="90" r="4" fill="var(--primary-gold)"/>
-
-              <text x="25" y="175">Jan</text>
-              <text x="125" y="175">Mar</text>
-              <text x="225" y="175">Jun</text>
-            </svg>
-          </div>
-        </div>
-        <div class="see-more-btn">
-          <a href="fluxo_detail.html">Ver Mais ›</a>
-        </div>
-      </section>
-
-      <!-- Performance de Vendas por Produto -->
-      <section class="chart-widget" id="vendas-widget" draggable="true">
-        <div class="chart-widget-header">
-          <h2 class="chart-widget-title">Performance de Vendas por Produto</h2>
-          <span class="chart-widget-options">Ver Detalhes</span>
-        </div>
-        <div class="chart-content">
-          <div class="bar-chart-container">
-            <div class="bar">
-              <div class="bar-rect" style="height: 60%;"></div>
-              <div class="bar-label">Produto A</div>
-            </div>
-            <div class="bar">
-              <div class="bar-rect" style="height: 90%;"></div>
-              <div class="bar-label">Produto B</div>
-            </div>
-            <div class="bar">
-              <div class="bar-rect" style="height: 40%;"></div>
-              <div class="bar-label">Produto C</div>
-            </div>
-            <div class="bar">
-              <div class="bar-rect" style="height: 75%;"></div>
-              <div class="bar-label">Produto D</div>
-            </div>
-            <div class="bar">
-              <div class="bar-rect" style="height: 55%;"></div>
-              <div class="bar-label">Produto E</div>
-            </div>
-          </div>
-        </div>
-        <div class="see-more-btn">
-          <a href="vendas_detail.html">Ver Mais ›</a>
-        </div>
-      </section>
-
-      <!-- Despesas por Categoria -->
-      <section class="chart-widget" id="despesas-widget" draggable="true">
-        <div class="chart-widget-header">
-          <h2 class="chart-widget-title">Despesas por Categoria</h2>
-          <span class="chart-widget-period">Mês Atual</span>
-        </div>
-        <div class="chart-content">
-          <div class="donut-chart-container">
-            <svg viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="40" stroke="var(--primary-blue)" stroke-width="20" fill="none"
-                      stroke-dasharray="251.2" stroke-dashoffset="100.48" />
-              <circle cx="50" cy="50" r="40" stroke="var(--primary-gold)" stroke-width="20" fill="none"
-                      stroke-dasharray="251.2" stroke-dashoffset="75.36" />
-              <circle cx="50" cy="50" r="40" stroke="#60a5fa" stroke-width="20" fill="none"
-                      stroke-dasharray="251.2" stroke-dashoffset="25.12" />
-              <circle cx="50" cy="50" r="40" stroke="#cbd5e1" stroke-width="20" fill="none"
-                      stroke-dasharray="251.2" stroke-dashoffset="0" />
-            </svg>
-            <div class="donut-center-text">
-              <span>R$ 15K</span><br>
-              <span class="label">Total Despesas</span>
-            </div>
-          </div>
-        </div>
-        <div class="see-more-btn">
-          <a href="despesas_detail.html">Ver Mais ›</a>
-        </div>
-      </section>
-
-      <!-- Receitas vs Despesas -->
-      <section class="chart-widget" id="receitas-despesas-widget" draggable="true" style="display: none;">
-        <div class="chart-widget-header">
-          <h2 class="chart-widget-title">Receitas vs Despesas</h2>
-          <span class="chart-widget-period">Últimos 12 Meses</span>
-        </div>
-        <div class="chart-content">
-          <div class="line-chart-container">
-            <svg viewBox="0 0 300 180" preserveAspectRatio="xMidYMid meet">
-              <polyline class="line-receita" points="10,130 60,90 110,100 160,60 210,80 260,40" fill="none" />
-              <polyline class="line-despesa" points="10,150 60,120 110,140 160,110 210,130 260,100" fill="none" />
-            </svg>
-          </div>
-        </div>
-        <div class="see-more-btn">
-          <a href="receitas_despesas_detail.html">Ver Mais ›</a>
-        </div>
-      </section>
-
-      <!-- KPI de Clientes -->
-      <section class="chart-widget" id="kpi-clientes-widget" draggable="true" style="display: none;">
-        <div class="chart-widget-header">
-          <h2 class="chart-widget-title">KPI de Clientes</h2>
-          <span class="chart-widget-period">Últimos 6 Meses</span>
-        </div>
-        <div class="chart-content">
-          <div class="metrics-grid">
-            <div class="metric-item">
-              <div class="metric-value">120</div>
-              <div class="metric-label">Novos Clientes</div>
-            </div>
-            <div class="metric-item">
-              <div class="metric-value">85%</div>
-              <div class="metric-label">Retenção</div>
-            </div>
-            <div class="metric-item">
-              <div class="metric-value">R$ 50K</div>
-              <div class="metric-label">Ticket Médio</div>
-            </div>
-            <div class="metric-item">
-              <div class="metric-value">✔️</div>
-              <div class="metric-label">Satisfação</div>
-            </div>
-          </div>
-        </div>
-        <div class="see-more-btn">
-          <a href="kpi_clientes_detail.html">Ver Mais ›</a>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <!-- Chat Flutuante -->
-  <button id="chatToggle" title="Abrir Chat">💬</button>
-  <div id="chatWidgetContainer">
-    <button id="chatCloseBtn" title="Fechar Chat">×</button>
-    <iframe id="chatIframe" src="chat.html"></iframe>
-  </div>
-
-  <script src="assets/js/dashboard.js"></script>
-</body>
+    <script src="assets/js/dashboard.js"></script>
+  </body>
 </html>

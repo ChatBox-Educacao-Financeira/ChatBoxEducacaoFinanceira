@@ -7,52 +7,50 @@
     <link rel="stylesheet" href="assets/css/register.css" />
   </head>
   <body>
-        <div class="signup-container">
-                <div class="signup-header">
-                    <div class="app-icon-signup">F</div>
-                    <div class="signup-title">Crie sua Conta no FinancePal</div>
-                    <div class="signup-subtitle">Rápido e fácil. Comece agora!</div>
-                </div>
-        
-                <form id="signupForm">
-                    <div class="form-group">
-                        <label class="form-label" for="fullName">Nome Completo</label>
-                        <input type="text" id="fullName" class="form-input" placeholder="Seu nome completo" required>
-                    </div>
-        
-                    <div class="form-group">
-                        <label class="form-label" for="email">E-mail</label>
-                        <input type="email" id="email" class="form-input" placeholder="Seu melhor e-mail" required>
-                    </div>
-        
-                    <div class="form-group">
-                        <label class="form-label" for="companyName">Nome da Empresa (Opcional)</label>
-                        <input type="text" id="companyName" class="form-input" placeholder="Nome da sua empresa">
-                    </div>
-        
-                    <div class="form-group">
-                        <label class="form-label" for="password">Senha</label>
-                        <input type="password" id="password" class="form-input" placeholder="Crie uma senha forte" required>
-                    </div>
-        
-                    <div class="form-group">
-                        <label class="form-label" for="confirmPassword">Confirmar Senha</label>
-                        <input type="password" id="confirmPassword" class="form-input" placeholder="Repita a senha" required>
-                    </div>
-        
-                    <button type="submit" class="signup-button">
-                        Cadastrar
-                    </button>
-                    
-                    <div id="tokenSection" style="display: none; margin-top: 20px;">
-            <label class="form-label" for="token">Digite o token enviado para seu e-mail</label>
-            <input type="text" id="token" class="form-input" placeholder="Ex: 123456">
-        </div> 
-        </form>
+    <div class="signup-container">
+      <div class="signup-header">
+        <div class="app-icon-signup">F</div>
+        <div class="signup-title">Crie sua Conta no FinancePal</div>
+        <div class="signup-subtitle">Rápido e fácil. Comece agora!</div>
+      </div>
 
-        <div class="login-link-container">
-            Já possui uma conta? <a href="index.html" class="login-link">Faça Login</a>
+      <form id="signupForm">
+        <div class="form-group">
+          <label class="form-label" for="fullName">Nome Completo</label>
+          <input type="text" id="fullName" class="form-input" placeholder="Seu nome completo" required />
         </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">E-mail</label>
+          <input type="email" id="email" class="form-input" placeholder="Seu melhor e-mail" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="companyName">Nome da Empresa (Opcional)</label>
+          <input type="text" id="companyName" class="form-input" placeholder="Nome da sua empresa" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Senha</label>
+          <input type="password" id="password" class="form-input" placeholder="Crie uma senha forte" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="confirmPassword">Confirmar Senha</label>
+          <input type="password" id="confirmPassword" class="form-input" placeholder="Repita a senha" required />
+        </div>
+
+        <button type="submit" class="signup-button">Cadastrar</button>
+
+        <div id="tokenSection" style="display: none; margin-top: 20px">
+          <label class="form-label" for="token">Digite o token enviado para seu e-mail</label>
+          <input type="text" id="token" class="form-input" placeholder="Ex: 123456" />
+        </div>
+      </form>
+
+      <div class="login-link-container">
+        Já possui uma conta? <a href="index.html" class="login-link">Faça Login</a>
+      </div>
     </div>
 
     <script src="assets/js/register.js"></script>
